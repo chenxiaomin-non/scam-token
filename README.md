@@ -1,0 +1,2 @@
+# scam-token
+No Descriptiom
