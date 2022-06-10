@@ -1,6 +1,6 @@
 import get_info, crawl_event, get_score
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -10,6 +10,8 @@ def index():
 
 @app.route('/', methods=['POST'])
 def response():
+    token_input = request.form['token']
+    
     score, explain = get_score.get_score()
     
     return render_template("result.html", score=score, explain=explain)
