@@ -70,7 +70,11 @@ def get_transaction_of_the_token(token: str, total_supply: int):
             value_soup = td_log.find_all("span", style="display:none")
             number = int(value_soup[0].text, 16)
 
-            transaction.append((span_list[0].text, span_list[1].text, number))
+            data = td_list[2].find_all('a')[2].text
+            data2 = td_list[2].find_all('a')[1].text
+
+
+            transaction.append((span_list[0].text, span_list[1].text, number, data, data2))
             if total_supply // number <= 20:
                 count += 1
             
@@ -84,8 +88,8 @@ def get_transaction_of_the_token(token: str, total_supply: int):
 def get_all_person_hold_the_token(transaction: list):
     person_set = set()
     for trans in transaction:
-        person_set.add(trans[0])
-        person_set.add(trans[1])
+        person_set.add(trans[3])
+        person_set.add(trans[4])
     
     return person_set
 
@@ -102,4 +106,8 @@ def get_balance_of_person_hold_token(person_set: set, token: str):
     
     return (list_person, count)
 
+trans = get_transaction_of_the_token('0xeece4436f3bb9d568f0a031c6f109888cd3ce120', 21000000000000000000000000)[0]
+person_set = get_all_person_hold_the_token(trans)
+print(person_set)
+print(get_balance_of_person_hold_token(person_set, '0xeece4436f3bb9d568f0a031c6f109888cd3ce120'))
 

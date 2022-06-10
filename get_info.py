@@ -85,7 +85,7 @@ def verify_token_source_code(token_address: str):
     url = 'https://api.etherscan.io/api?module=contract&action=getsourcecode' +\
         '&address=' + token_address + '&apikey=' + ETHER_KEY
 
-    data = requests.get(url).json()['result']['ABI']
+    data = requests.get(url).json()['result'][0]['ABI']
     if data == "Contract source code not verified":
         return ("Contract source code not verified", False)
     else:
