@@ -18,7 +18,7 @@
     }
 
     .container{
-        height: 200px;
+        height: 250px;
         width: fit-content;
         top: 200px;
         position: absolute;
@@ -53,6 +53,7 @@
         justify-content: center;
         align-items: center;
         margin-left: 40px;
+        font-size: 14pt;
         margin-top: 60px;
     }
 
@@ -63,7 +64,9 @@
         background-color: whitesmoke;
         border-radius: 5px;
         border: 2px blue solid;
+        font-size: 14pt;
         color: blue;
+        margin-bottom: 100px;
     }
 
     .button:hover{
@@ -87,14 +90,32 @@
         border: 1px aqua solid;
     }
 
+    .verify-failed{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: red;
+        font-size: 12pt;
+        font-style: normal;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 </style>
+
+<script>
+    function clearInput() {
+        document.getElementsByClassName("verify-failed")[0].innerHTML = "";
+    }
+</script>
 
 <body>
     <div class="container">
         <form name="test" action="." onsubmit="return validateForm()" method="post">
             <div class="input-group">
-                Token address:<input type="text" name="token" placeholder="0x..."><br>
+                Token address:<input type="text" name="token" onkeyup="clearInput()" value="" placeholder="0x..."><br>
             </div>
+            <div class="verify-failed">{{notify}}</div>
             <input class="button" type="submit" value="Check the address">
         </form>
     </div>

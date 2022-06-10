@@ -106,8 +106,8 @@ def get_balance_of_person_hold_token(person_set: set, token: str):
     
     return (list_person, count)
 
-trans = get_transaction_of_the_token('0xeece4436f3bb9d568f0a031c6f109888cd3ce120', 21000000000000000000000000)[0]
-person_set = get_all_person_hold_the_token(trans)
-print(person_set)
-print(get_balance_of_person_hold_token(person_set, '0xeece4436f3bb9d568f0a031c6f109888cd3ce120'))
+# trans = get_transaction_of_the_token('0xeece4436f3bb9d568f0a031c6f109888cd3ce120', 21000000000000000000000000)[0]
+# person_set = get_all_person_hold_the_token(trans)
+# print(person_set)
+# print(get_balance_of_person_hold_token(person_set, '0xeece4436f3bb9d568f0a031c6f109888cd3ce120'))
 

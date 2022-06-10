@@ -52,7 +52,6 @@ def get_total_supply(contract_address: str):
     data = requests.get(url).json()['result']
     return int(data)
 
-# print(get_total_supply('0xeece4436f3bb9d568f0a031c6f109888cd3ce120'))
 
 # get total circulating supply 
 # -> the numbers of cryptocurrencies coins publicly available in the market
@@ -140,3 +139,9 @@ def get_total_token_of_creator(address: str):
 # print(get_total_token_of_creator('0xeece4436f3bb9d568f0a031c6f109888cd3ce120'))
 
 # print(verify_token_source_code('0xeece4436f3bb9d568f0a031c6f109888cd3ce120'))
+
+def check_validate_input(token: str):
+    result = get_total_supply(token)
+    if result == 0:
+        return False
+    return True
