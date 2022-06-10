@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    html, body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Courier New', Courier, monospace; 
+    }
+
+    .score{
+        margin-top: 20px;
+        font-size: 20px;
+        font-style: normal;
+        margin-bottom: 50px;
+    }
+
+    .explain{
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container{
+        margin-top: 200px;
+        height: fit-content;
+        width: fit-content;
+
+        padding: 40px;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px springgreen solid;
+        border-radius: 10px;
+        box-sizing: content-box;
+    }
+
+    .explain2 {
+        font-size: 14px;
+        margin-top: 20px;
+        background-color: rgb(150, 150, 150);
+        opacity: 0.9;
+        padding: 10px;
+        border-radius: 10px;
+        box-sizing: content-box;
+        border: 1px black solid;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="score">
+            The score is: {{score}}
+        </div>
+        <div class="explain">
+            Explain:
+            <div class="explain2">
+                {{explain}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
