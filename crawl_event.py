@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+from get_info import get_account_balance, get_total_circulating_supply
+
 def get_transaction_of_the_token(token: str, total_supply: int):
 
     cookies = {
@@ -78,4 +80,26 @@ def get_transaction_of_the_token(token: str, total_supply: int):
     return (transaction, count/len(transaction)*100)
         
 # print(get_transaction_of_the_token('0xeece4436f3bb9d568f0a031c6f109888cd3ce120', 21000000000000000000000000))
+
+def get_all_person_hold_the_token(transaction: list):
+    person_set = set()
+    for trans in transaction:
+        person_set.add(trans[0])
+        person_set.add(trans[1])
     
+    return person_set
+
+def get_balance_of_person_hold_token(person_set: set, token: str):
+    total_supply = get_total_circulating_supply(token)
+    count = 0
+    list_person = []
+    for person in person_set:
+        number_token_hold = get_account_balance(token, person)
+        percent = number_token_hold/total_supply
+        list_person.append((person, percent))
+        if percent >= 0.05:
+            count += 1
+    
+    return (list_person, count)
+
+
