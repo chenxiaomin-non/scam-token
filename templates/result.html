@@ -18,9 +18,16 @@
 
     .score{
         margin-top: 20px;
-        font-size: 20px;
-        font-style: normal;
+        font-size: 32pt;
+        font-style: bold;
         margin-bottom: 50px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .notify{
+        font-size: 28pt;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: {{color}};
     }
 
     .explain{
@@ -41,9 +48,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: 2px springgreen solid;
+        border: 2px black solid;
         border-radius: 10px;
         box-sizing: content-box;
+        border-color: {{color}};
     }
 
     .explain2 {
@@ -56,6 +64,7 @@
         box-sizing: content-box;
         border: 1px black solid;
     }
+
 </style>
 
 <body>
@@ -63,13 +72,16 @@
         <div class="score">
             The score is: {{score}}/100
         </div>
-        <div>
-            {{notify}}
+        <div class="notify">
+            {{ notify }}
         </div>
         <div class="explain">
             Explain:
+            <br><br
             <div class="explain2">
-                {{explain}}
+                {% for line in explain -%}
+                <br> {{line}}
+                {% endfor%}
             </div>
         </div>
     </div>

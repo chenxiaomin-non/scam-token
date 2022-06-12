@@ -22,7 +22,7 @@ def get_token_info(token: str):
     response = requests.get(url, headers=headers).json()
     
     if response['status']['code'] == 401:
-        explain += 'Not found information about the token in CryptoQuant - ERC20'
+        explain += ' - Not found information about the token in CryptoQuant - ERC20'
         check_point -= 1
     
     ### chekc with alchemy api
@@ -34,7 +34,7 @@ def get_token_info(token: str):
     response = requests.post(ALCHEMY_URL, json=json_data).json()
     try:
         if response['error']['code'] == -32602:
-            explain += '\nNot found information about the token in Alchemy - ERC20'
+            explain += '\n - Not found information about the token in Alchemy - ERC20'
             check_point -= 1
     except KeyError:
         explain = response['result']

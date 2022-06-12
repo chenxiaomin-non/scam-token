@@ -19,8 +19,13 @@ def response():
         return render_template("index.html", notify=notify)
 
     score, result, explain = get_score.get_score(token_input)
-    
-    return render_template("result.html", score=score, explain=explain, notify=result)
+    if score >= 70:
+        color = "springgreen"
+    elif score >= 40:
+        color = "yellow"
+    else:
+        color = "red"    
+    return render_template("result.html", score=score, explain=explain.split('\n'), notify=result, color=color)
 
 if __name__ == '__main__':
     app.run(debug=True)
