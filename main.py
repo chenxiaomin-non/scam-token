@@ -1,3 +1,4 @@
+from unicodedata import name
 import get_info, crawl_event, get_score
 
 from flask import Flask, render_template, request
@@ -18,14 +19,14 @@ def response():
         notify = "The input string is invalid token"
         return render_template("index.html", notify=notify)
 
-    score, result, explain = get_score.get_score(token_input)
+    score, result, explain, name, symbol = get_score.get_score(token_input)
     if score >= 70:
         color = "springgreen"
     elif score >= 40:
-        color = "yellow"
+        color = "orange"
     else:
         color = "red"    
-    return render_template("result.html", score=score, explain=explain.split('\n'), notify=result, color=color)
+    return render_template("result.html", score=score, explain=explain.split('\n'), notify=result, color=color, name=name, symbol=symbol)
 
 if __name__ == '__main__':
     app.run(debug=True)

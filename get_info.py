@@ -145,3 +145,14 @@ def check_validate_input(token: str):
     if result == 0:
         return False
     return True
+
+# get the liquidity of the token by USD or BNB
+def get_liquidity_of_token(token: str):
+    url = 'https://api.pancakeswap.info/api/v2/tokens/' + token
+    response = requests.get(url).json()
+    data = response['data']
+    name = data['name']
+    symbol = data['symbol']
+    price_USD = data['price']
+    price_BNB = data['price_BNB']
+    return (name, symbol, price_USD, price_BNB)

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Result of Token</title>
 </head>
 
 <style>
@@ -31,10 +31,11 @@
     }
 
     .explain{
-        font-size: 16px;
+        font-size: 18px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: left;
+        align-items: center;
     }
 
     .container{
@@ -55,7 +56,7 @@
     }
 
     .explain2 {
-        font-size: 14px;
+        font-size: 16px;
         margin-top: 20px;
         background-color: rgb(230, 230, 230);
         opacity: 0.9;
@@ -65,24 +66,30 @@
         border: 1px black solid;
     }
 
+    .name-sym{
+        font-size: 20px;
+        color: {{color}};
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin-left: 15px;
+    }
 </style>
 
 <body>
     <div class="container">
-        <div class="score">
-            The score is: {{score}}/100
-        </div>
         <div class="notify">
             {{ notify }}
         </div>
+        <div class="score">
+            The score is: {{score}}/100
+        </div>
         <div class="explain">
-            Explain:
-            <br><br
-            <div class="explain2">
-                {% for line in explain -%}
-                <br> {{line}}
-                {% endfor%}
-            </div>
+            Explain for <div class="name-sym">{{name}} [{{symbol}}]:</div>
+        </div>
+        <br><br>
+        <div class="explain2">
+            {% for line in explain -%}
+            <br> {{line}}
+            {% endfor%}
         </div>
     </div>
 </body>
