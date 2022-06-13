@@ -1,6 +1,4 @@
-from unittest import result
 import requests
-import json
 from datetime import datetime
 
 ALCHEMY_URL = "https://eth-mainnet.alchemyapi.io/v2/ZOhGCZTUSVSxgQsreqF1y7qweOOjkak8"
@@ -50,7 +48,11 @@ def get_total_supply(contract_address: str):
          contract_address + '&apikey=' + BSC_KEY
     
     data = requests.get(url).json()['result']
-    return int(data)
+    try:
+        rs = int(data)
+    except ValueError:
+        rs = 0
+    return rs
 
 
 # get total circulating supply 
@@ -150,9 +152,12 @@ def check_validate_input(token: str):
 def get_liquidity_of_token(token: str):
     url = 'https://api.pancakeswap.info/api/v2/tokens/' + token
     response = requests.get(url).json()
-    data = response['data']
-    name = data['name']
-    symbol = data['symbol']
-    price_USD = data['price']
-    price_BNB = data['price_BNB']
+    try:
+        data = response['data']
+        name = data['name']
+        symbol = data['symbol']
+        price_USD = data['price']
+        price_BNB = data['price_BNB']
+    except:
+        return('Not Found', 'Not Found', '0', '0.0')
     return (name, symbol, price_USD, price_BNB)

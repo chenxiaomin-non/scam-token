@@ -1,5 +1,4 @@
 import get_info, crawl_event
-import re
 
 def get_score(address: str):
     original_score = 100

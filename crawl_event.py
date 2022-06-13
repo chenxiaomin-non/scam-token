@@ -80,7 +80,8 @@ def get_transaction_of_the_token(token: str, total_supply: int):
             
         except Exception:
             continue
-    
+    if len(transaction) == 0:
+        return ([], 0)
     return (transaction, count/len(transaction)*100)
         
 # print(get_transaction_of_the_token('0xeece4436f3bb9d568f0a031c6f109888cd3ce120', 21000000000000000000000000))
