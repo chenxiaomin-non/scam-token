@@ -1,5 +1,5 @@
 from unicodedata import name
-import get_info, crawl_event, get_score, data
+import get_info, crawl_event, get_score, data, crawl_info
 
 from flask import Flask, render_template, request
 
@@ -40,6 +40,7 @@ def response():
         
         if score < 0:
             score = 0
+        name, symbol = crawl_info.get_info_from_BSC(token_input)
         data.insert_token_data(token_input, score, explain, result, color, name, symbol)
     else :
         _, score, explain, result, color, name, symbol = find_token_data
