@@ -40,7 +40,7 @@ def response():
         
         if score < 0:
             score = 0
-        name, symbol = crawl_info.get_info_from_BSC(token_input)
+        name, symbol, _ = crawl_info.get_info_from_BSC(token_input)
         data.insert_token_data(token_input, score, explain, result, color, name, symbol)
     else :
         _, score, explain, result, color, name, symbol = find_token_data
